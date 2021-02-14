@@ -1,0 +1,7 @@
+Selvaraj, P., et al., A computational study of ethylene–air sooting flames: Effects of large polycyclic aromatic hydrocarbons. Combustion and Flame, 2016. 163: p. 427-436.
+
+sk99 has 99 species, PAH up to A7;
+KAUST_C18 is a sub-mech from sk99, PAH up to A4R5;
+KAUST_C2 is a sub-mech from sk99, species up to C2;
+ckwyp72 is a QSSA version mechanism from sk99, PAH up to A4R5;
+ckwyp86 is a QSSA version mechanism from sk99, PAH up to A7;
