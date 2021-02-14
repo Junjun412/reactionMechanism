@@ -1,0 +1,31 @@
+!72-species reduced mechanism
+!genrated by: Tianfeng Lu, tlu@engr.uconn.edu
+!28-Jul-2014
+
+ELEMENTS
+C H N O 
+END
+
+SPECIES
+H               	H2              	O               	O2              	
+OH              	H2O             	HO2             	H2O2            	
+CO              	CO2             	CH2O            	HCO             	
+CH3OH           	CH4             	CH3             	CH2             	
+C2H6            	C2H5            	C2H4            	C2H3            	
+C2H2            	CH3CHO          	C2H3OH          	CH2CHO          	
+CH2CO           	HCCO            	C2H4O1-2        	C2H3CHO         	
+C3H8            	C3H6            	C3H5-A          	C3H5-S          	
+C3H5-T          	C3H4-P          	C3H3            	C4H6            	
+C4H4            	C4H3-I          	C4H3-N          	C4H2            	
+C4H5-I          	C4H5-2          	C4H6-2          	H2C4O           	
+A1              	c-C5H6          	A1-             	C6H5O           	
+c-C5H5          	C5H4O           	C6H5CH2         	C6H5CH3         	
+A1C2H           	A1CHO           	A1C2H*          	A1C2H3          	
+A2-1            	A2              	A2R5            	A3-4            	
+A2R5-           	A4              	A4-1            	A4-2            	
+A4-4            	A1C2H5          	C9H7            	A2CH3           	
+C9H6O           	C9H8            	A4R5            	N2              	
+END
+
+REACTIONS
+END
