@@ -1,0 +1,4540 @@
+<?xml version="1.0"?>
+<ctml>
+  <validate reactions="yes" species="yes"/>
+
+  <!-- phase gas     -->
+  <phase dim="3" id="gas">
+    <elementArray datasrc="elements.xml">C H N O</elementArray>
+    <speciesArray datasrc="#species_data">
+      H         H2        O         O2        OH
+      H2O       N2        HO2       H2O2      CO
+      CO2       CH2O      HCO       CH3OH     CH2OH
+      CH3O      CH4       CH3       CH2       CH2(S)
+      C2H6      C2H5      C2H4      C2H3      C2H2
+      C2H       CH3CHO    C2H3OH    CH3CO     CH2CHO
+      CH2CO     HCCO      C2H4O1-2  C2H3O1-2  H2CC</speciesArray>
+    <reactionArray datasrc="#reaction_data"/>
+    <state>
+      <temperature units="K">300.0</temperature>
+      <pressure units="Pa">101325.0</pressure>
+    </state>
+    <thermo model="IdealGas"/>
+    <kinetics model="GasKinetics"/>
+    <transport model="Mix"/>
+  </phase>
+
+  <!-- species definitions     -->
+  <speciesData id="species_data">
+
+    <!-- u'    species H    ' -->
+    <species name="H">
+      <atomArray>H:1 </atomArray>
+      <note>u'L6/94'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.500000000E+00,   0.000000000E+00,   0.000000000E+00,   0.000000000E+00, 
+             0.000000000E+00,   2.547366000E+04,  -4.466828500E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.500000000E+00,   0.000000000E+00,   0.000000000E+00,   0.000000000E+00, 
+             0.000000000E+00,   2.547366000E+04,  -4.466828500E-01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">atom</string>
+        <LJ_welldepth units="K">145.000</LJ_welldepth>
+        <LJ_diameter units="A">2.050</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species H2    ' -->
+    <species name="H2">
+      <atomArray>H:2 </atomArray>
+      <note>u'TPIS78'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.344331120E+00,   7.980520750E-03,  -1.947815100E-05,   2.015720940E-08, 
+             -7.376117610E-12,  -9.179351730E+02,   6.830102380E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.932865750E+00,   8.266080260E-04,  -1.464023640E-07,   1.541004140E-11, 
+             -6.888048000E-16,  -8.130655810E+02,  -1.024328650E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">38.000</LJ_welldepth>
+        <LJ_diameter units="A">2.920</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.790</polarizability>
+        <rotRelax>280.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species O    ' -->
+    <species name="O">
+      <atomArray>O:1 </atomArray>
+      <note>u'L1/90'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.168267100E+00,  -3.279318840E-03,   6.643063960E-06,  -6.128066240E-09, 
+             2.112659710E-12,   2.912225920E+04,   2.051933460E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.543636970E+00,  -2.731624860E-05,  -4.190295200E-09,   4.954818450E-12, 
+             -4.795536940E-16,   2.922601200E+04,   4.922294570E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">atom</string>
+        <LJ_welldepth units="K">80.000</LJ_welldepth>
+        <LJ_diameter units="A">2.750</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species O2    ' -->
+    <species name="O2">
+      <atomArray>O:2 </atomArray>
+      <note>u'RUS89'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.782456360E+00,  -2.996734160E-03,   9.847302010E-06,  -9.681295090E-09, 
+             3.243728370E-12,  -1.063943560E+03,   3.657675730E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.660960650E+00,   6.563658110E-04,  -1.411496270E-07,   2.057979350E-11, 
+             -1.299134360E-15,  -1.215977180E+03,   3.415362790E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">107.400</LJ_welldepth>
+        <LJ_diameter units="A">3.458</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">1.600</polarizability>
+        <rotRelax>3.800</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species OH    ' -->
+    <species name="OH">
+      <atomArray>H:1 O:1 </atomArray>
+      <note>u'IU3/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.991984240E+00,  -2.401066550E-03,   4.616640330E-06,  -3.879163060E-09, 
+             1.363195020E-12,   3.368898360E+03,  -1.039984770E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.838530330E+00,   1.107412890E-03,  -2.940002090E-07,   4.206987290E-11, 
+             -2.422898900E-15,   3.697808080E+03,   5.844946520E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">80.000</LJ_welldepth>
+        <LJ_diameter units="A">2.750</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species H2O    ' -->
+    <species name="H2O">
+      <atomArray>H:2 O:1 </atomArray>
+      <note>u'L5/89'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.198635200E+00,  -2.036401700E-03,   6.520341600E-06,  -5.487926900E-09, 
+             1.771968000E-12,  -3.029372600E+04,  -8.490090100E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.677038900E+00,   2.973181600E-03,  -7.737688900E-07,   9.443351400E-11, 
+             -4.268999100E-15,  -2.988589400E+04,   6.882550000E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">572.400</LJ_welldepth>
+        <LJ_diameter units="A">2.605</LJ_diameter>
+        <dipoleMoment units="Debye">1.844</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>4.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species N2    ' -->
+    <species name="N2">
+      <atomArray>N:2 </atomArray>
+      <note>u'G8/02'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.531005280E+00,  -1.236609880E-04,  -5.029994330E-07,   2.435306120E-09, 
+             -1.408812350E-12,  -1.046976280E+03,   2.967470380E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.952576370E+00,   1.396900400E-03,  -4.926316030E-07,   7.860101950E-11, 
+             -4.607552040E-15,  -9.239486880E+02,   5.871887620E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">97.530</LJ_welldepth>
+        <LJ_diameter units="A">3.621</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">1.760</polarizability>
+        <rotRelax>4.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species HO2    ' -->
+    <species name="HO2">
+      <atomArray>H:1 O:2 </atomArray>
+      <note>u'T1/09'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.301798070E+00,  -4.749120970E-03,   2.115829050E-05,  -2.427639140E-08, 
+             9.292252250E-12,   2.640184850E+02,   3.716662200E+00</floatArray>
+        </NASA>
+        <NASA Tmax="5000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.172287410E+00,   1.881176270E-03,  -3.462772860E-07,   1.946575490E-11, 
+             1.762569050E-16,   3.102068390E+01,   2.957676720E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">107.400</LJ_welldepth>
+        <LJ_diameter units="A">3.458</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species H2O2    ' -->
+    <species name="H2O2">
+      <atomArray>H:2 O:2 </atomArray>
+      <note>u'T8/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.315151490E+00,  -8.473906220E-04,   1.764043230E-05,  -2.267629440E-08, 
+             9.089501580E-12,  -1.770674370E+04,   3.273733190E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.579773050E+00,   4.053260030E-03,  -1.298447300E-06,   1.982114000E-10, 
+             -1.139687920E-14,  -1.800717750E+04,   6.649706940E-01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">107.400</LJ_welldepth>
+        <LJ_diameter units="A">3.458</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>3.800</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CO    ' -->
+    <species name="CO">
+      <atomArray>C:1 O:1 </atomArray>
+      <note>u'RUS79'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.579533500E+00,  -6.103536900E-04,   1.016814300E-06,   9.070058600E-10, 
+             -9.044244900E-13,  -1.434408600E+04,   3.508409300E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.048485900E+00,   1.351728100E-03,  -4.857940500E-07,   7.885364400E-11, 
+             -4.698074600E-15,  -1.426611700E+04,   6.017097700E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">98.100</LJ_welldepth>
+        <LJ_diameter units="A">3.650</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">1.950</polarizability>
+        <rotRelax>1.800</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CO2    ' -->
+    <species name="CO2">
+      <atomArray>C:1 O:2 </atomArray>
+      <note>u'L7/88'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.356813000E+00,   8.984129900E-03,  -7.122063200E-06,   2.457300800E-09, 
+             -1.428854800E-13,  -4.837197100E+04,   9.900903500E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.636511100E+00,   2.741456900E-03,  -9.958975900E-07,   1.603866600E-10, 
+             -9.161985700E-15,  -4.902490400E+04,  -1.934895500E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">244.000</LJ_welldepth>
+        <LJ_diameter units="A">3.763</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">2.650</polarizability>
+        <rotRelax>2.100</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2O    ' -->
+    <species name="CH2O">
+      <atomArray>H:2 C:1 O:1 </atomArray>
+      <note>u'T5/11'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.793723120E+00,  -9.908333220E-03,   3.732199900E-05,  -3.792852370E-08, 
+             1.317726410E-11,  -1.437919530E+04,   6.027980580E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.169526650E+00,   6.193205600E-03,  -2.250563660E-06,   3.659756600E-10, 
+             -2.201494580E-14,  -1.454868310E+04,   6.042078980E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">498.000</LJ_welldepth>
+        <LJ_diameter units="A">3.590</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species HCO    ' -->
+    <species name="HCO">
+      <atomArray>H:1 C:1 O:1 </atomArray>
+      <note>u'T5/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.237546100E+00,  -3.320752570E-03,   1.400302640E-05,  -1.342399950E-08, 
+             4.374162080E-12,   3.872411850E+03,   3.308348690E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.920015420E+00,   2.522793240E-03,  -6.710041640E-07,   1.056159480E-10, 
+             -7.437982610E-15,   3.653429280E+03,   3.580770560E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">498.000</LJ_welldepth>
+        <LJ_diameter units="A">3.590</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH3OH    ' -->
+    <species name="CH3OH">
+      <atomArray>H:4 C:1 O:1 </atomArray>
+      <note>u'T06/02'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.658510510E+00,  -1.629834190E-02,   6.919381560E-05,  -7.583729260E-08, 
+             2.804275500E-11,  -2.561197360E+04,  -8.973305080E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.527267950E+00,   1.031787830E-02,  -3.628929440E-06,   5.774480160E-10, 
+             -3.421826320E-14,  -2.600288340E+04,   5.167586930E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">481.800</LJ_welldepth>
+        <LJ_diameter units="A">3.626</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2OH    ' -->
+    <species name="CH2OH">
+      <atomArray>H:3 C:1 O:1 </atomArray>
+      <note>u'IU2/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.478343670E+00,  -1.350703100E-03,   2.784849800E-05,  -3.648690600E-08, 
+             1.479074500E-11,  -3.500728900E+03,   3.309135000E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.093143700E+00,   5.947612600E-03,  -2.064974600E-06,   3.230081730E-10, 
+             -1.881259020E-14,  -4.034096400E+03,  -1.846914930E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">417.000</LJ_welldepth>
+        <LJ_diameter units="A">3.690</LJ_diameter>
+        <dipoleMoment units="Debye">1.700</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH3O    ' -->
+    <species name="CH3O">
+      <atomArray>H:3 C:1 O:1 </atomArray>
+      <note>u'IU1/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.711805020E+00,  -2.804633060E-03,   3.765509710E-05,  -4.730720890E-08, 
+             1.865884200E-11,   1.295697600E+03,   6.572408640E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.757792380E+00,   7.441424740E-03,  -2.697051760E-06,   4.380905040E-10, 
+             -2.635370980E-14,   3.781119400E+02,  -1.966800280E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">417.000</LJ_welldepth>
+        <LJ_diameter units="A">3.690</LJ_diameter>
+        <dipoleMoment units="Debye">1.700</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH4    ' -->
+    <species name="CH4">
+      <atomArray>H:4 C:1 </atomArray>
+      <note>u'G8/99'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.149114680E+00,  -1.366220090E-02,   4.914539210E-05,  -4.842467670E-08, 
+             1.666034410E-11,  -1.024659830E+04,  -4.638488420E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             1.653262260E+00,   1.002630990E-02,  -3.316612380E-06,   5.364831380E-10, 
+             -3.146967580E-14,  -1.000959360E+04,   9.905062830E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">141.400</LJ_welldepth>
+        <LJ_diameter units="A">3.746</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">2.600</polarizability>
+        <rotRelax>13.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH3    ' -->
+    <species name="CH3">
+      <atomArray>H:3 C:1 </atomArray>
+      <note>u'IU0702'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.657179700E+00,   2.126597900E-03,   5.458388300E-06,  -6.618100300E-09, 
+             2.465707400E-12,   1.642271600E+04,   1.673535400E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.978120600E+00,   5.797852000E-03,  -1.975580000E-06,   3.072979000E-10, 
+             -1.791741600E-14,   1.650951300E+04,   4.722479900E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">144.000</LJ_welldepth>
+        <LJ_diameter units="A">3.800</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2    ' -->
+    <species name="CH2">
+      <atomArray>H:2 C:1 </atomArray>
+      <note>u'IU3/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.717578460E+00,   1.273912600E-03,   2.173472510E-06,  -3.488585000E-09, 
+             1.652088660E-12,   4.587238660E+04,   1.752979450E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.146318860E+00,   3.036712590E-03,  -9.964744390E-07,   1.504835800E-10, 
+             -8.573355150E-15,   4.604126050E+04,   4.723417110E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">144.000</LJ_welldepth>
+        <LJ_diameter units="A">3.800</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2(S)    ' -->
+    <species name="CH2(S)">
+      <atomArray>H:2 C:1 </atomArray>
+      <note>u'IU6/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.193313250E+00,  -2.331051840E-03,   8.156764510E-06,  -6.629859810E-09, 
+             1.932331990E-12,   5.036622460E+04,  -7.467343100E-01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.135016860E+00,   2.895939260E-03,  -8.166680900E-07,   1.135726970E-10, 
+             -6.362628350E-15,   5.050405040E+04,   4.060306210E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">144.000</LJ_welldepth>
+        <LJ_diameter units="A">3.800</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>0.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H6    ' -->
+    <species name="C2H6">
+      <atomArray>H:6 C:2 </atomArray>
+      <note>u'G8/88'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.291425720E+00,  -5.501549010E-03,   5.994384580E-05,  -7.084664690E-08, 
+             2.686858360E-11,  -1.152220560E+04,   2.666789940E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.046664110E+00,   1.535388020E-02,  -5.470394850E-06,   8.778265440E-10, 
+             -5.231675310E-14,  -1.244734990E+04,  -9.686983130E-01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">247.500</LJ_welldepth>
+        <LJ_diameter units="A">4.350</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H5    ' -->
+    <species name="C2H5">
+      <atomArray>H:5 C:2 </atomArray>
+      <note>u'8/4/4THERM'</note>
+      <thermo>
+        <NASA Tmax="1387.0" Tmin="300.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             1.327302170E+00,   1.766567530E-02,  -6.149265580E-06,  -3.011434660E-10, 
+             4.386177750E-13,   1.342840280E+04,   1.717892160E+01</floatArray>
+        </NASA>
+        <NASA Tmax="5000.0" Tmin="1387.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.887843900E+00,   1.030767930E-02,  -3.468443960E-06,   5.324992570E-10, 
+             -3.065126510E-14,   1.150654990E+04,  -8.496517710E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">247.500</LJ_welldepth>
+        <LJ_diameter units="A">4.350</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H4    ' -->
+    <species name="C2H4">
+      <atomArray>H:4 C:2 </atomArray>
+      <note>u'G1/00'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.959200630E+00,  -7.570513730E-03,   5.709899930E-05,  -6.915883520E-08, 
+             2.698841900E-11,   5.089775980E+03,   4.097302130E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.991827240E+00,   1.048339080E-02,  -3.717213420E-06,   5.946283660E-10, 
+             -3.536303860E-14,   4.268658510E+03,  -2.690817620E-01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">238.400</LJ_welldepth>
+        <LJ_diameter units="A">3.496</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H3    ' -->
+    <species name="C2H3">
+      <atomArray>H:3 C:2 </atomArray>
+      <note>u'ATCT/A'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.363776420E+00,   2.657657220E-04,   2.796207040E-05,  -3.729869420E-08, 
+             1.515901760E-11,   3.447495890E+04,   7.915100920E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.150267630E+00,   7.540213410E-03,  -2.629978470E-06,   4.159740480E-10, 
+             -2.454075090E-14,   3.385663800E+04,   1.728122350E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">265.300</LJ_welldepth>
+        <LJ_diameter units="A">3.721</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H2    ' -->
+    <species name="C2H2">
+      <atomArray>H:2 C:2 </atomArray>
+      <note>u'G1/91'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             8.086796820E-01,   2.336157620E-02,  -3.551722340E-05,   2.801529580E-08, 
+             -8.500751650E-12,   2.642898080E+04,   1.393967610E+01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.658784890E+00,   4.883966670E-03,  -1.608288880E-06,   2.469745440E-10, 
+             -1.386059590E-14,   2.575940420E+04,  -3.998381940E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">265.300</LJ_welldepth>
+        <LJ_diameter units="A">3.721</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H    ' -->
+    <species name="C2H">
+      <atomArray>H:1 C:2 </atomArray>
+      <note>u'T5/10'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.898676760E+00,   1.329884890E-02,  -2.807333270E-05,   2.894847550E-08, 
+             -1.075023510E-11,   6.706160500E+04,   6.185476320E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.662702480E+00,   3.824922520E-03,  -1.366325000E-06,   2.134550400E-10, 
+             -1.232168480E-14,   6.716837900E+04,   3.922057920E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">linear</string>
+        <LJ_welldepth units="K">265.300</LJ_welldepth>
+        <LJ_diameter units="A">3.721</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH3CHO    ' -->
+    <species name="CH3CHO">
+      <atomArray>H:4 C:2 O:1 </atomArray>
+      <note>u'L8/88'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.729459500E+00,  -3.193285800E-03,   4.753492100E-05,  -5.745861100E-08, 
+             2.193111200E-11,  -2.157287800E+04,   4.103015900E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.404110800E+00,   1.172305900E-02,  -4.226313700E-06,   6.837245100E-10, 
+             -4.098486300E-14,  -2.259312200E+04,  -3.480791700E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H3OH    ' -->
+    <species name="C2H3OH">
+      <atomArray>H:4 C:2 O:1 </atomArray>
+      <note>u'2/3/9THERM'</note>
+      <thermo>
+        <NASA Tmax="1410.0" Tmin="300.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             -1.279722600E-01,   3.385060730E-02,  -3.306449350E-05,   1.648587390E-08, 
+             -3.199354550E-12,  -1.599145440E+04,   2.304386010E+01</floatArray>
+        </NASA>
+        <NASA Tmax="5000.0" Tmin="1410.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             8.325981580E+00,   8.033872810E-03,  -2.639284050E-06,   3.984107260E-10, 
+             -2.265511550E-14,  -1.832214360E+04,  -2.020803050E+01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">470.600</LJ_welldepth>
+        <LJ_diameter units="A">4.410</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH3CO    ' -->
+    <species name="CH3CO">
+      <atomArray>H:3 C:2 O:1 </atomArray>
+      <note>u'IU2/03'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.035870500E+00,   8.772948700E-04,   3.071001000E-05,  -3.924756500E-08, 
+             1.529686900E-11,  -2.682073800E+03,   7.861768200E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.313716500E+00,   9.173779300E-03,  -3.322038600E-06,   5.394745600E-10, 
+             -3.245236800E-14,  -3.645041400E+03,  -1.675755800E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2CHO    ' -->
+    <species name="CH2CHO">
+      <atomArray>H:3 C:2 O:1 </atomArray>
+      <note>u'T03/10'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             2.795026000E+00,   1.010994720E-02,   1.617506450E-05,  -3.103031450E-08, 
+             1.394361390E-11,   1.629449750E+02,   1.236466570E+01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             6.539283380E+00,   7.802386290E-03,  -2.764136120E-06,   4.420989060E-10, 
+             -2.629542900E-14,  -1.188586590E+03,  -8.720913930E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species CH2CO    ' -->
+    <species name="CH2CO">
+      <atomArray>H:2 C:2 O:1 </atomArray>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="300.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             1.814225110E+00,   1.990085900E-02,  -2.214160080E-05,   1.450285210E-08, 
+             -3.988770680E-12,  -7.053949260E+03,   1.360793590E+01</floatArray>
+        </NASA>
+        <NASA Tmax="5000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.358693670E+00,   6.956415860E-03,  -2.648026370E-06,   4.650675920E-10, 
+             -3.086418200E-14,  -7.902940130E+03,  -3.985257310E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species HCCO    ' -->
+    <species name="HCCO">
+      <atomArray>H:1 C:2 O:1 </atomArray>
+      <note>u'T4/09'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             1.876079690E+00,   2.212054180E-02,  -3.588693250E-05,   3.054025410E-08, 
+             -1.012810690E-11,   2.016338400E+04,   1.369682900E+01</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.914793330E+00,   3.714087300E-03,  -1.301370100E-06,   2.064733450E-10, 
+             -1.214767590E-14,   1.935963010E+04,  -5.505672690E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">150.000</LJ_welldepth>
+        <LJ_diameter units="A">2.500</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>1.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H4O1-2    ' -->
+    <species name="C2H4O1-2">
+      <atomArray>H:4 C:2 O:1 </atomArray>
+      <note>u'L8/88'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.759053200E+00,  -9.441218000E-03,   8.030972100E-05,  -1.008078800E-07, 
+             4.003992100E-11,  -7.560814300E+03,   7.849747500E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.488764100E+00,   1.204619000E-02,  -4.333693100E-06,   7.002831100E-10, 
+             -4.194908800E-14,  -9.180425100E+03,  -7.079960500E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species C2H3O1-2    ' -->
+    <species name="C2H3O1-2">
+      <atomArray>H:3 C:2 O:1 </atomArray>
+      <note>u'A1/05'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.583490170E+00,  -6.022758050E-03,   6.324268670E-05,  -8.185407070E-08, 
+             3.304445050E-11,   1.856813530E+04,   9.597259260E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             5.601580350E+00,   9.176139620E-03,  -3.280289020E-06,   5.279038880E-10, 
+             -3.153622410E-14,   1.714462520E+04,  -5.472285120E+00</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">436.000</LJ_welldepth>
+        <LJ_diameter units="A">3.970</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.000</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+
+    <!-- u'    species H2CC    ' -->
+    <species name="H2CC">
+      <atomArray>H:2 C:2 </atomArray>
+      <note>u'L12/89'</note>
+      <thermo>
+        <NASA Tmax="1000.0" Tmin="200.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             3.281548300E+00,   6.976479100E-03,  -2.385524400E-06,  -1.210443200E-09, 
+             9.818954500E-13,   4.862179400E+04,   5.920391000E+00</floatArray>
+        </NASA>
+        <NASA Tmax="6000.0" Tmin="1000.0" P0="100000.0">
+           <floatArray name="coeffs" size="7">
+             4.278034000E+00,   4.756280400E-03,  -1.630100900E-06,   2.546280600E-10, 
+             -1.488637900E-14,   4.831668800E+04,   6.402370100E-01</floatArray>
+        </NASA>
+      </thermo>
+      <transport model="gas_transport">
+        <string title="geometry">nonlinear</string>
+        <LJ_welldepth units="K">209.000</LJ_welldepth>
+        <LJ_diameter units="A">4.100</LJ_diameter>
+        <dipoleMoment units="Debye">0.000</dipoleMoment>
+        <polarizability units="A3">0.000</polarizability>
+        <rotRelax>2.500</rotRelax>
+        <dispersion_coefficient units="A5">0.000</dispersion_coefficient>
+        <quadrupole_polarizability units="A5">0.000</quadrupole_polarizability>
+      </transport>
+    </species>
+  </speciesData>
+  <reactionData id="reaction_data">
+
+    <!-- reaction 0001    -->
+    <reaction reversible="yes" id="0001">
+      <equation>H + O2 [=] O + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.040000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">15286.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1.0 O2:1</reactants>
+      <products>O:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0002    -->
+    <reaction reversible="yes" id="0002">
+      <equation>O + H2 [=] H + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.080000E+01</A>
+           <b>2.67</b>
+           <E units="cal/mol">6292.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2:1 O:1.0</reactants>
+      <products>H:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0003    -->
+    <reaction reversible="yes" id="0003">
+      <equation>OH + H2 [=] H + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.380000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">6990.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2:1 OH:1.0</reactants>
+      <products>H:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0004    -->
+    <reaction reversible="yes" id="0004">
+      <equation>O + H2O [=] 2 OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.970000E+03</A>
+           <b>2.02</b>
+           <E units="cal/mol">13400.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2O:1 O:1.0</reactants>
+      <products>OH:2.0</products>
+    </reaction>
+
+    <!-- reaction 0005    -->
+    <reaction reversible="yes" type="threeBody" id="0005">
+      <equation>H2 + M [=] 2 H + M</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.577000E+16</A>
+           <b>-1.4</b>
+           <E units="cal/mol">104400.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.9 CO2:3.8 H2:2.5 H2O:12.0</efficiencies>
+      </rateCoeff>
+      <reactants>H2:1.0</reactants>
+      <products>H:2.0</products>
+    </reaction>
+
+    <!-- reaction 0006    -->
+    <reaction reversible="yes" type="threeBody" id="0006">
+      <equation>2 O + M [=] O2 + M</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.165000E+09</A>
+           <b>-0.5</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.9 CO2:3.8 H2:2.5 H2O:12.0</efficiencies>
+      </rateCoeff>
+      <reactants>O:2.0</reactants>
+      <products>O2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0007    -->
+    <reaction reversible="yes" type="threeBody" id="0007">
+      <equation>O + H + M [=] OH + M</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.714000E+12</A>
+           <b>-1.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.5 H2O:12.0</efficiencies>
+      </rateCoeff>
+      <reactants>H:1 O:1.0</reactants>
+      <products>OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0008    -->
+    <reaction reversible="yes" type="threeBody" id="0008">
+      <equation>H + OH + M [=] H2O + M</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.500000E+16</A>
+           <b>-2.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 H2:0.73 H2O:3.65</efficiencies>
+      </rateCoeff>
+      <reactants>H:1.0 OH:1</reactants>
+      <products>H2O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0009    -->
+    <reaction reversible="yes" type="falloff" id="0009">
+      <equation>H + O2 (+ M) [=] HO2 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.650000E+09</A>
+           <b>0.44</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.737000E+13</A>
+           <b>-1.23</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.9 CO2:3.8 H2:1.3 H2O:10.0</efficiencies>
+        <falloff type="Troe">0.67 1e-30 1e+30 1e+30 </falloff>
+      </rateCoeff>
+      <reactants>H:1.0 O2:1</reactants>
+      <products>HO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0010    -->
+    <reaction reversible="yes" id="0010">
+      <equation>HO2 + H [=] 2 OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.079000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">295.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 HO2:1.0</reactants>
+      <products>OH:2.0</products>
+    </reaction>
+
+    <!-- reaction 0011    -->
+    <reaction reversible="yes" id="0011">
+      <equation>H2 + O2 [=] H + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.176000E+02</A>
+           <b>2.433</b>
+           <E units="cal/mol">53502.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2:1.0 O2:1</reactants>
+      <products>H:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0012    -->
+    <reaction reversible="yes" id="0012">
+      <equation>HO2 + O [=] OH + O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.250000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:1.0 O:1</reactants>
+      <products>O2:1 OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0013    -->
+    <reaction reversible="yes" id="0013">
+      <equation>HO2 + OH [=] H2O + O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.456000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">-497.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:1.0 OH:1</reactants>
+      <products>H2O:1.0 O2:1</products>
+    </reaction>
+
+    <!-- reaction 0014    -->
+    <reaction duplicate="yes" reversible="yes" id="0014">
+      <equation>2 HO2 [=] H2O2 + O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.300000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">-1630.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:2.0</reactants>
+      <products>H2O2:1.0 O2:1</products>
+    </reaction>
+
+    <!-- reaction 0015    -->
+    <reaction duplicate="yes" reversible="yes" id="0015">
+      <equation>2 HO2 [=] H2O2 + O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.658000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">12000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:2.0</reactants>
+      <products>H2O2:1.0 O2:1</products>
+    </reaction>
+
+    <!-- reaction 0016    -->
+    <reaction reversible="yes" type="falloff" id="0016">
+      <equation>H2O2 (+ H2O) [=] 2 OH (+ H2O)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+12</A>
+           <b>0.9</b>
+           <E units="cal/mol">48749.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.865000E+22</A>
+           <b>-2.3</b>
+           <E units="cal/mol">48749.000000</E>
+        </Arrhenius>
+        <efficiencies default="0.0">H2O:1.0</efficiencies>
+        <falloff type="Troe">0.51 1e-30 1e+30 </falloff>
+      </rateCoeff>
+      <reactants>H2O2:1.0</reactants>
+      <products>OH:2.0</products>
+    </reaction>
+
+    <!-- reaction 0017    -->
+    <reaction reversible="yes" type="falloff" id="0017">
+      <equation>H2O2 (+ M) [=] 2 OH (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+12</A>
+           <b>0.9</b>
+           <E units="cal/mol">48749.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>2.490000E+21</A>
+           <b>-2.3</b>
+           <E units="cal/mol">48749.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">CO:2.8 CO2:1.6 H2:3.7 H2O:0.0 H2O2:7.7 N2:1.5 O2:1.2</efficiencies>
+        <falloff type="Troe">0.43 1e-30 1e+30 </falloff>
+      </rateCoeff>
+      <reactants>H2O2:1.0</reactants>
+      <products>OH:2.0</products>
+    </reaction>
+
+    <!-- reaction 0018    -->
+    <reaction reversible="yes" id="0018">
+      <equation>H2O2 + H [=] H2O + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.410000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">3970.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 H2O2:1.0</reactants>
+      <products>H2O:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0019    -->
+    <reaction reversible="yes" id="0019">
+      <equation>H2O2 + H [=] H2 + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.150000E+07</A>
+           <b>1.0</b>
+           <E units="cal/mol">6000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 H2O2:1.0</reactants>
+      <products>H2:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0020    -->
+    <reaction reversible="yes" id="0020">
+      <equation>H2O2 + O [=] OH + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.550000E+03</A>
+           <b>2.0</b>
+           <E units="cal/mol">3970.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2O2:1.0 O:1</reactants>
+      <products>HO2:1 OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0021    -->
+    <reaction duplicate="yes" reversible="yes" id="0021">
+      <equation>H2O2 + OH [=] H2O + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.740000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">318.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2O2:1.0 OH:1</reactants>
+      <products>H2O:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0022    -->
+    <reaction duplicate="yes" reversible="yes" id="0022">
+      <equation>H2O2 + OH [=] H2O + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.590000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">7269.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2O2:1.0 OH:1</reactants>
+      <products>H2O:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0023    -->
+    <reaction reversible="yes" type="falloff" id="0023">
+      <equation>CO + O (+ M) [=] CO2 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.362000E+07</A>
+           <b>0.0</b>
+           <E units="cal/mol">2384.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.173000E+18</A>
+           <b>-2.79</b>
+           <E units="cal/mol">4191.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">CO:1.75 CO2:3.6 H2:2.0 H2O:12.0</efficiencies>
+        <falloff type="Lindemann"/>
+      </rateCoeff>
+      <reactants>CO:1.0 O:1</reactants>
+      <products>CO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0024    -->
+    <reaction reversible="yes" id="0024">
+      <equation>CO + O2 [=] CO2 + O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.119000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">47700.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CO:1.0 O2:1</reactants>
+      <products>CO2:1.0 O:1</products>
+    </reaction>
+
+    <!-- reaction 0025    -->
+    <reaction duplicate="yes" reversible="yes" id="0025">
+      <equation>CO + OH [=] CO2 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.015000E+01</A>
+           <b>2.053</b>
+           <E units="cal/mol">-355.700000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CO:1.0 OH:1</reactants>
+      <products>H:1 CO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0026    -->
+    <reaction duplicate="yes" reversible="yes" id="0026">
+      <equation>CO + OH [=] CO2 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.757000E+09</A>
+           <b>-0.664</b>
+           <E units="cal/mol">331.800000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CO:1.0 OH:1</reactants>
+      <products>H:1 CO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0027    -->
+    <reaction reversible="yes" id="0027">
+      <equation>CO + HO2 [=] CO2 + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.570000E+02</A>
+           <b>2.18</b>
+           <E units="cal/mol">17940.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:1 CO:1.0</reactants>
+      <products>CO2:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0028    -->
+    <reaction reversible="yes" type="threeBody" id="0028">
+      <equation>HCO + M [=] H + CO + M</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.700000E+08</A>
+           <b>0.66</b>
+           <E units="cal/mol">14870.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:12.0</efficiencies>
+      </rateCoeff>
+      <reactants>HCO:1.0</reactants>
+      <products>H:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0029    -->
+    <reaction reversible="yes" id="0029">
+      <equation>HCO + O2 [=] CO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.580000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">410.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:1.0 O2:1</reactants>
+      <products>HO2:1 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0030    -->
+    <reaction reversible="yes" id="0030">
+      <equation>HCO + H [=] CO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.340000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 HCO:1.0</reactants>
+      <products>H2:1 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0031    -->
+    <reaction reversible="yes" id="0031">
+      <equation>HCO + O [=] CO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.020000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:1.0 O:1</reactants>
+      <products>CO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0032    -->
+    <reaction reversible="yes" id="0032">
+      <equation>HCO + O [=] CO2 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:1.0 O:1</reactants>
+      <products>H:1 CO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0033    -->
+    <reaction reversible="yes" id="0033">
+      <equation>HCO + OH [=] CO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.020000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:1.0 OH:1</reactants>
+      <products>H2O:1 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0034    -->
+    <reaction reversible="no" id="0034">
+      <equation>HCO + HO2 =] CO2 + H + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:1 HCO:1.0</reactants>
+      <products>H:1 CO2:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0035    -->
+    <reaction reversible="no" id="0035">
+      <equation>2 HCO =] H2 + 2 CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:2.0</reactants>
+      <products>H2:1.0 CO:2.0</products>
+    </reaction>
+
+    <!-- reaction 0036    -->
+    <reaction reversible="yes" id="0036">
+      <equation>HCO + CH3 [=] CH4 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.650000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1 HCO:1.0</reactants>
+      <products>CO:1 CH4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0037    -->
+    <reaction reversible="yes" id="0037">
+      <equation>CH2O + O2 [=] HCO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.070000E+12</A>
+           <b>0.0</b>
+           <E units="cal/mol">53420.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 O2:1</reactants>
+      <products>HO2:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0038    -->
+    <reaction reversible="yes" id="0038">
+      <equation>2 HCO [=] CH2O + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.800000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCO:2.0</reactants>
+      <products>CH2O:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0039    -->
+    <reaction reversible="yes" type="falloff" id="0039">
+      <equation>HCO + H (+ M) [=] CH2O (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.090000E+09</A>
+           <b>0.48</b>
+           <E units="cal/mol">-260.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.350000E+18</A>
+           <b>-2.57</b>
+           <E units="cal/mol">1425.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.7824 271 2755 6570 </falloff>
+      </rateCoeff>
+      <reactants>H:1 HCO:1.0</reactants>
+      <products>CH2O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0040    -->
+    <reaction reversible="yes" type="falloff" id="0040">
+      <equation>CO + H2 (+ M) [=] CH2O (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.300000E+04</A>
+           <b>1.5</b>
+           <E units="cal/mol">79600.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>5.070000E+21</A>
+           <b>-3.42</b>
+           <E units="cal/mol">84348.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.932 197 1540 10300 </falloff>
+      </rateCoeff>
+      <reactants>H2:1 CO:1.0</reactants>
+      <products>CH2O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0041    -->
+    <reaction reversible="yes" id="0041">
+      <equation>CH2O + OH [=] HCO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.820000E+04</A>
+           <b>1.63</b>
+           <E units="cal/mol">-1055.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 OH:1</reactants>
+      <products>H2O:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0042    -->
+    <reaction reversible="yes" id="0042">
+      <equation>CH2O + H [=] HCO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.740000E+04</A>
+           <b>1.9</b>
+           <E units="cal/mol">2740.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 H:1</reactants>
+      <products>H2:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0043    -->
+    <reaction reversible="yes" id="0043">
+      <equation>CH2O + O [=] HCO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.260000E+06</A>
+           <b>1.15</b>
+           <E units="cal/mol">2260.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 O:1</reactants>
+      <products>HCO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0044    -->
+    <reaction reversible="yes" id="0044">
+      <equation>CH2O + CH3 [=] HCO + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.830000E-02</A>
+           <b>3.36</b>
+           <E units="cal/mol">4312.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 CH3:1</reactants>
+      <products>CH4:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0045    -->
+    <reaction reversible="yes" id="0045">
+      <equation>CH2O + HO2 [=] HCO + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.880000E+01</A>
+           <b>2.7</b>
+           <E units="cal/mol">11520.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 HO2:1</reactants>
+      <products>HCO:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0046    -->
+    <reaction reversible="yes" type="falloff" id="0046">
+      <equation>CH3O (+ M) [=] CH2O + H (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.800000E+13</A>
+           <b>0.0</b>
+           <E units="cal/mol">26170.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.867000E+22</A>
+           <b>-3.0</b>
+           <E units="cal/mol">24307.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.9 2500 1300 1e+99 </falloff>
+      </rateCoeff>
+      <reactants>CH3O:1.0</reactants>
+      <products>CH2O:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0047    -->
+    <reaction reversible="yes" id="0047">
+      <equation>CH3O + O2 [=] CH2O + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.380000E-22</A>
+           <b>9.5</b>
+           <E units="cal/mol">-5501.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3O:1.0 O2:1</reactants>
+      <products>CH2O:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0048    -->
+    <reaction reversible="yes" id="0048">
+      <equation>CH2O + CH3O [=] CH3OH + HCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.620000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">2294.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2O:1.0 CH3O:1</reactants>
+      <products>CH3OH:1.0 HCO:1</products>
+    </reaction>
+
+    <!-- reaction 0049    -->
+    <reaction reversible="yes" id="0049">
+      <equation>CH3 + CH3OH [=] CH4 + CH3O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.440000E-02</A>
+           <b>3.1</b>
+           <E units="cal/mol">6935.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1 CH3:1.0</reactants>
+      <products>CH3O:1 CH4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0050    -->
+    <reaction reversible="yes" id="0050">
+      <equation>CH3O + CH3 [=] CH2O + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1 CH3O:1.0</reactants>
+      <products>CH2O:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0051    -->
+    <reaction reversible="yes" id="0051">
+      <equation>CH3O + H [=] CH2O + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH3O:1.0</reactants>
+      <products>CH2O:1.0 H2:1</products>
+    </reaction>
+
+    <!-- reaction 0052    -->
+    <reaction reversible="yes" id="0052">
+      <equation>CH3O + HO2 [=] CH2O + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.010000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3O:1.0 HO2:1</reactants>
+      <products>CH2O:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0053    -->
+    <reaction reversible="yes" type="falloff" id="0053">
+      <equation>CH2O + H (+ M) [=] CH2OH (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.400000E+08</A>
+           <b>0.454</b>
+           <E units="cal/mol">3600.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.270000E+26</A>
+           <b>-4.82</b>
+           <E units="cal/mol">6530.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.7187 103 1291 4160 </falloff>
+      </rateCoeff>
+      <reactants>CH2O:1.0 H:1</reactants>
+      <products>CH2OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0054    -->
+    <reaction duplicate="yes" reversible="yes" id="0054">
+      <equation>CH2OH + O2 [=] CH2O + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.510000E+12</A>
+           <b>-1.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 O2:1</reactants>
+      <products>CH2O:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0055    -->
+    <reaction duplicate="yes" reversible="yes" id="0055">
+      <equation>CH2OH + O2 [=] CH2O + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.410000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">5017.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 O2:1</reactants>
+      <products>CH2O:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0056    -->
+    <reaction reversible="yes" id="0056">
+      <equation>CH2OH + H [=] CH2O + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 H:1</reactants>
+      <products>CH2O:1.0 H2:1</products>
+    </reaction>
+
+    <!-- reaction 0057    -->
+    <reaction reversible="yes" id="0057">
+      <equation>CH2OH + HO2 [=] CH2O + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 HO2:1</reactants>
+      <products>CH2O:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0058    -->
+    <reaction reversible="yes" id="0058">
+      <equation>CH2OH + HCO [=] 2 CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.800000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 HCO:1</reactants>
+      <products>CH2O:2.0</products>
+    </reaction>
+
+    <!-- reaction 0059    -->
+    <reaction reversible="yes" id="0059">
+      <equation>CH2OH + CH3O [=] CH2O + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.400000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1.0 CH3O:1</reactants>
+      <products>CH2O:1.0 CH3OH:1</products>
+    </reaction>
+
+    <!-- reaction 0060    -->
+    <reaction reversible="yes" id="0060">
+      <equation>CH3OH + HCO [=] CH2OH + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.630000E+00</A>
+           <b>2.9</b>
+           <E units="cal/mol">13110.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 HCO:1</reactants>
+      <products>CH2O:1 CH2OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0061    -->
+    <reaction reversible="yes" id="0061">
+      <equation>OH + CH2OH [=] H2O + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.400000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1 OH:1.0</reactants>
+      <products>CH2O:1 H2O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0062    -->
+    <reaction reversible="yes" id="0062">
+      <equation>O + CH2OH [=] OH + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.200000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:1 O:1.0</reactants>
+      <products>CH2O:1 OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0063    -->
+    <reaction reversible="yes" id="0063">
+      <equation>2 CH2OH [=] CH2O + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2OH:2.0</reactants>
+      <products>CH2O:1.0 CH3OH:1</products>
+    </reaction>
+
+    <!-- reaction 0064    -->
+    <reaction reversible="yes" type="falloff" id="0064">
+      <equation>CH3OH (+ M) [=] CH3 + OH (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.084000E+18</A>
+           <b>-0.615</b>
+           <E units="cal/mol">92540.600000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.500000E+40</A>
+           <b>-6.995</b>
+           <E units="cal/mol">97992.200000</E>
+        </Arrhenius>
+        <falloff type="Troe">-0.4748 35580 1116 9023 </falloff>
+      </rateCoeff>
+      <reactants>CH3OH:1.0</reactants>
+      <products>CH3:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0065    -->
+    <reaction reversible="yes" type="falloff" id="0065">
+      <equation>CH3OH (+ M) [=] CH2(S) + H2O (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.121000E+18</A>
+           <b>-1.017</b>
+           <E units="cal/mol">91712.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.430000E+44</A>
+           <b>-8.227</b>
+           <E units="cal/mol">99417.100000</E>
+        </Arrhenius>
+        <falloff type="Troe">2.545 3290 47320 47110 </falloff>
+      </rateCoeff>
+      <reactants>CH3OH:1.0</reactants>
+      <products>CH2(S):1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0066    -->
+    <reaction reversible="yes" type="falloff" id="0066">
+      <equation>CH3OH (+ M) [=] CH2OH + H (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.896000E-03</A>
+           <b>5.038</b>
+           <E units="cal/mol">84467.400000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>3.390000E+39</A>
+           <b>-7.244</b>
+           <E units="cal/mol">105230.300000</E>
+        </Arrhenius>
+        <falloff type="Troe">-73.91 37050 41500 5220 </falloff>
+      </rateCoeff>
+      <reactants>CH3OH:1.0</reactants>
+      <products>CH2OH:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0067    -->
+    <reaction reversible="yes" id="0067">
+      <equation>CH3OH + H [=] CH2OH + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.070000E+02</A>
+           <b>2.55</b>
+           <E units="cal/mol">5440.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 H:1</reactants>
+      <products>H2:1 CH2OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0068    -->
+    <reaction reversible="yes" id="0068">
+      <equation>CH3OH + H [=] CH3O + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.990000E+02</A>
+           <b>2.56</b>
+           <E units="cal/mol">10300.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 H:1</reactants>
+      <products>H2:1 CH3O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0069    -->
+    <reaction reversible="yes" id="0069">
+      <equation>CH3OH + O [=] CH2OH + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.880000E+02</A>
+           <b>2.5</b>
+           <E units="cal/mol">3080.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 O:1</reactants>
+      <products>CH2OH:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0070    -->
+    <reaction reversible="yes" id="0070">
+      <equation>CH3OH + OH [=] CH2OH + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.080000E+01</A>
+           <b>2.65</b>
+           <E units="cal/mol">-806.700000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 OH:1</reactants>
+      <products>CH2OH:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0071    -->
+    <reaction reversible="yes" id="0071">
+      <equation>CH3OH + OH [=] CH3O + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.500000E-01</A>
+           <b>3.03</b>
+           <E units="cal/mol">-763.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 OH:1</reactants>
+      <products>H2O:1 CH3O:1.0</products>
+    </reaction>
+
+    <!-- reaction 0072    -->
+    <reaction reversible="yes" id="0072">
+      <equation>CH3OH + O2 [=] CH2OH + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.050000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">44900.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 O2:1</reactants>
+      <products>CH2OH:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0073    -->
+    <reaction reversible="yes" id="0073">
+      <equation>CH3OH + HO2 [=] CH2OH + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.080000E+01</A>
+           <b>2.55</b>
+           <E units="cal/mol">10530.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 HO2:1</reactants>
+      <products>CH2OH:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0074    -->
+    <reaction reversible="yes" id="0074">
+      <equation>CH3OH + CH3 [=] CH2OH + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.190000E-02</A>
+           <b>3.17</b>
+           <E units="cal/mol">7172.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1.0 CH3:1</reactants>
+      <products>CH2OH:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0075    -->
+    <reaction reversible="yes" id="0075">
+      <equation>CH3O + CH3OH [=] CH2OH + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">4074.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3OH:1 CH3O:1.0</reactants>
+      <products>CH3OH:1 CH2OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0076    -->
+    <reaction reversible="yes" id="0076">
+      <equation>2 CH3O [=] CH3OH + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.030000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3O:2.0</reactants>
+      <products>CH3OH:1.0 CH2O:1</products>
+    </reaction>
+
+    <!-- reaction 0077    -->
+    <reaction reversible="yes" type="falloff" id="0077">
+      <equation>CH3 + H (+ M) [=] CH4 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.270000E+13</A>
+           <b>-0.63</b>
+           <E units="cal/mol">383.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>2.477000E+27</A>
+           <b>-4.76</b>
+           <E units="cal/mol">2440.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.783 74 2941 6964 </falloff>
+      </rateCoeff>
+      <reactants>H:1 CH3:1.0</reactants>
+      <products>CH4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0078    -->
+    <reaction reversible="yes" id="0078">
+      <equation>CH4 + H [=] CH3 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.140000E+02</A>
+           <b>2.5</b>
+           <E units="cal/mol">9587.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH4:1.0</reactants>
+      <products>H2:1 CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0079    -->
+    <reaction reversible="yes" id="0079">
+      <equation>CH4 + OH [=] CH3 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.830000E+01</A>
+           <b>2.6</b>
+           <E units="cal/mol">2190.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH4:1.0 OH:1</reactants>
+      <products>H2O:1 CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0080    -->
+    <reaction reversible="yes" id="0080">
+      <equation>CH4 + O [=] CH3 + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.020000E+06</A>
+           <b>1.5</b>
+           <E units="cal/mol">8600.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH4:1.0 O:1</reactants>
+      <products>CH3:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0081    -->
+    <reaction reversible="yes" id="0081">
+      <equation>CH4 + HO2 [=] CH3 + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.695000E-02</A>
+           <b>3.74</b>
+           <E units="cal/mol">21010.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HO2:1 CH4:1.0</reactants>
+      <products>CH3:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0082    -->
+    <reaction reversible="yes" id="0082">
+      <equation>CH4 + CH2 [=] 2 CH3</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.460000E+03</A>
+           <b>2.0</b>
+           <E units="cal/mol">8270.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2:1 CH4:1.0</reactants>
+      <products>CH3:2.0</products>
+    </reaction>
+
+    <!-- reaction 0083    -->
+    <reaction reversible="yes" type="plog" id="0083">
+      <equation>CH3 + OH [=] CH2(S) + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.936000E+11</A>
+           <b>-0.669</b>
+           <E units="cal/mol">-445.800000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.207000E+12</A>
+           <b>-0.778</b>
+           <E units="cal/mol">-175.600000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>5.282000E+14</A>
+           <b>-1.518</b>
+           <E units="cal/mol">1772.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.788000E+20</A>
+           <b>-3.155</b>
+           <E units="cal/mol">7003.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.433000E+16</A>
+           <b>-1.962</b>
+           <E units="cal/mol">8244.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 OH:1</reactants>
+      <products>CH2(S):1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0084    -->
+    <reaction reversible="yes" type="plog" id="0084">
+      <equation>CH3 + OH [=] CH2O + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.502000E+02</A>
+           <b>1.441</b>
+           <E units="cal/mol">-3244.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.854000E+02</A>
+           <b>1.327</b>
+           <E units="cal/mol">-2975.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.650000E+04</A>
+           <b>0.973</b>
+           <E units="cal/mol">-2010.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>5.374000E+06</A>
+           <b>0.287</b>
+           <E units="cal/mol">280.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>9.494000E+15</A>
+           <b>-2.199</b>
+           <E units="cal/mol">9769.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 OH:1</reactants>
+      <products>CH2O:1.0 H2:1</products>
+    </reaction>
+
+    <!-- reaction 0085    -->
+    <reaction reversible="yes" type="plog" id="0085">
+      <equation>CH3 + OH [=] CH2OH + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.621000E+07</A>
+           <b>0.965</b>
+           <E units="cal/mol">3214.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.807000E+07</A>
+           <b>0.95</b>
+           <E units="cal/mol">3247.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.686000E+07</A>
+           <b>0.833</b>
+           <E units="cal/mol">3566.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.525000E+10</A>
+           <b>0.134</b>
+           <E units="cal/mol">5641.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>3.590000E+11</A>
+           <b>-0.186</b>
+           <E units="cal/mol">8601.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 OH:1</reactants>
+      <products>CH2OH:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0086    -->
+    <reaction reversible="yes" type="plog" id="0086">
+      <equation>CH3 + OH [=] H + CH3O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.186000E+06</A>
+           <b>1.016</b>
+           <E units="cal/mol">11940.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.188000E+06</A>
+           <b>1.016</b>
+           <E units="cal/mol">11940.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.230000E+06</A>
+           <b>1.011</b>
+           <E units="cal/mol">11950.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.798000E+06</A>
+           <b>0.965</b>
+           <E units="cal/mol">12060.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>5.242000E+07</A>
+           <b>0.551</b>
+           <E units="cal/mol">13070.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 OH:1</reactants>
+      <products>H:1.0 CH3O:1</products>
+    </reaction>
+
+    <!-- reaction 0087    -->
+    <reaction reversible="yes" id="0087">
+      <equation>CH3 + HO2 [=] CH3O + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+09</A>
+           <b>0.269</b>
+           <E units="cal/mol">-687.500000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 HO2:1</reactants>
+      <products>CH3O:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0088    -->
+    <reaction reversible="yes" id="0088">
+      <equation>CH3 + HO2 [=] CH4 + O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.160000E+02</A>
+           <b>2.23</b>
+           <E units="cal/mol">-3022.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 HO2:1</reactants>
+      <products>CH4:1.0 O2:1</products>
+    </reaction>
+
+    <!-- reaction 0089    -->
+    <reaction reversible="yes" id="0089">
+      <equation>CH3 + O [=] CH2O + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.540000E+10</A>
+           <b>0.05</b>
+           <E units="cal/mol">-136.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 O:1</reactants>
+      <products>CH2O:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0090    -->
+    <reaction reversible="yes" id="0090">
+      <equation>CH3 + O2 [=] CH3O + O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.546000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">28320.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 O2:1</reactants>
+      <products>CH3O:1.0 O:1</products>
+    </reaction>
+
+    <!-- reaction 0091    -->
+    <reaction reversible="yes" id="0091">
+      <equation>CH3 + O2 [=] CH2O + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.641000E-03</A>
+           <b>3.283</b>
+           <E units="cal/mol">8105.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 O2:1</reactants>
+      <products>CH2O:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0092    -->
+    <reaction reversible="yes" id="0092">
+      <equation>CH2(S) + N2 [=] CH2 + N2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.500000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">600.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 N2:1</reactants>
+      <products>CH2:1.0 N2:1</products>
+    </reaction>
+
+    <!-- reaction 0093    -->
+    <reaction reversible="yes" id="0093">
+      <equation>CH2(S) + O [=] CO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.500000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 O:1</reactants>
+      <products>H2:1 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0094    -->
+    <reaction reversible="yes" id="0094">
+      <equation>CH2(S) + O [=] HCO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.500000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 O:1</reactants>
+      <products>H:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0095    -->
+    <reaction reversible="yes" id="0095">
+      <equation>CH2(S) + OH [=] CH2O + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 OH:1</reactants>
+      <products>CH2O:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0096    -->
+    <reaction reversible="yes" id="0096">
+      <equation>CH2(S) + H2 [=] CH3 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2:1 CH2(S):1.0</reactants>
+      <products>H:1 CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0097    -->
+    <reaction reversible="no" id="0097">
+      <equation>CH2(S) + O2 =] H + OH + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.800000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 O2:1</reactants>
+      <products>H:1.0 CO:1 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0098    -->
+    <reaction reversible="yes" id="0098">
+      <equation>CH2(S) + O2 [=] CO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 O2:1</reactants>
+      <products>H2O:1 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0099    -->
+    <reaction reversible="yes" id="0099">
+      <equation>CH2(S) + H2O [=] CH2 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 H2O:1</reactants>
+      <products>CH2:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0100    -->
+    <reaction reversible="yes" id="0100">
+      <equation>CH2(S) + CO [=] CH2 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 CO:1</reactants>
+      <products>CH2:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0101    -->
+    <reaction reversible="yes" id="0101">
+      <equation>CH2(S) + CO2 [=] CH2 + CO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 CO2:1</reactants>
+      <products>CH2:1.0 CO2:1</products>
+    </reaction>
+
+    <!-- reaction 0102    -->
+    <reaction reversible="yes" id="0102">
+      <equation>CH2(S) + CO2 [=] CH2O + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.400000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 CO2:1</reactants>
+      <products>CH2O:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0103    -->
+    <reaction reversible="yes" type="falloff" id="0103">
+      <equation>CH2 + H (+ M) [=] CH3 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.500000E+13</A>
+           <b>-0.8</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>3.200000E+21</A>
+           <b>-3.14</b>
+           <E units="cal/mol">1230.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.68 78 1995 5590 </falloff>
+      </rateCoeff>
+      <reactants>H:1 CH2:1.0</reactants>
+      <products>CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0104    -->
+    <reaction reversible="yes" id="0104">
+      <equation>CH2 + O2 [=] HCO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.060000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">1500.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2:1.0 O2:1</reactants>
+      <products>HCO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0105    -->
+    <reaction reversible="no" id="0105">
+      <equation>CH2 + O2 =] CO2 + 2 H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.640000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">1500.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2:1.0 O2:1</reactants>
+      <products>H:2.0 CO2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0106    -->
+    <reaction reversible="no" id="0106">
+      <equation>CH2 + O =] CO + 2 H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2:1.0 O:1</reactants>
+      <products>H:2.0 CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0107    -->
+    <reaction reversible="yes" type="falloff" id="0107">
+      <equation>2 CH3 (+ M) [=] C2H6 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.277000E+12</A>
+           <b>-0.69</b>
+           <E units="cal/mol">174.900000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>8.054000E+25</A>
+           <b>-3.75</b>
+           <E units="cal/mol">981.600000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">CO:2.0 CO2:3.0 H2O:5.0</efficiencies>
+        <falloff type="Troe">0 570 1e+30 1e+30 </falloff>
+      </rateCoeff>
+      <reactants>CH3:2.0</reactants>
+      <products>C2H6:1.0</products>
+    </reaction>
+
+    <!-- reaction 0108    -->
+    <reaction reversible="yes" type="falloff" id="0108">
+      <equation>C2H5 + H (+ M) [=] C2H6 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.210000E+14</A>
+           <b>-0.99</b>
+           <E units="cal/mol">1580.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.990000E+35</A>
+           <b>-7.08</b>
+           <E units="cal/mol">6685.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.842 125 2219 6882 </falloff>
+      </rateCoeff>
+      <reactants>H:1 C2H5:1.0</reactants>
+      <products>C2H6:1.0</products>
+    </reaction>
+
+    <!-- reaction 0109    -->
+    <reaction reversible="yes" id="0109">
+      <equation>C2H6 + H [=] C2H5 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.150000E+05</A>
+           <b>1.9</b>
+           <E units="cal/mol">7530.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 H:1</reactants>
+      <products>H2:1 C2H5:1.0</products>
+    </reaction>
+
+    <!-- reaction 0110    -->
+    <reaction reversible="yes" id="0110">
+      <equation>C2H6 + O [=] C2H5 + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.550000E+03</A>
+           <b>2.4</b>
+           <E units="cal/mol">5830.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 O:1</reactants>
+      <products>C2H5:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0111    -->
+    <reaction reversible="yes" id="0111">
+      <equation>C2H6 + OH [=] C2H5 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.480000E+04</A>
+           <b>1.9</b>
+           <E units="cal/mol">950.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 OH:1</reactants>
+      <products>C2H5:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0112    -->
+    <reaction reversible="yes" id="0112">
+      <equation>C2H6 + O2 [=] C2H5 + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.030000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">51870.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 O2:1</reactants>
+      <products>C2H5:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0113    -->
+    <reaction reversible="yes" id="0113">
+      <equation>C2H6 + CH3 [=] C2H5 + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.480000E-04</A>
+           <b>4.0</b>
+           <E units="cal/mol">8280.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 CH3:1</reactants>
+      <products>C2H5:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0114    -->
+    <reaction reversible="yes" id="0114">
+      <equation>C2H6 + HO2 [=] C2H5 + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.460000E-02</A>
+           <b>3.61</b>
+           <E units="cal/mol">16920.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 HO2:1</reactants>
+      <products>C2H5:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0115    -->
+    <reaction reversible="yes" id="0115">
+      <equation>C2H6 + CH3O [=] C2H5 + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.410000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">7090.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H6:1.0 CH3O:1</reactants>
+      <products>CH3OH:1 C2H5:1.0</products>
+    </reaction>
+
+    <!-- reaction 0116    -->
+    <reaction reversible="yes" id="0116">
+      <equation>CH2(S) + C2H6 [=] CH3 + C2H5</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 C2H6:1</reactants>
+      <products>C2H5:1 CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0117    -->
+    <reaction reversible="yes" type="falloff" id="0117">
+      <equation>C2H4 + H (+ M) [=] C2H5 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.569000E+05</A>
+           <b>1.463</b>
+           <E units="cal/mol">1355.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.419000E+33</A>
+           <b>-6.642</b>
+           <E units="cal/mol">5769.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">-0.569 299 -9147 152.4 </falloff>
+      </rateCoeff>
+      <reactants>H:1 C2H4:1.0</reactants>
+      <products>C2H5:1.0</products>
+    </reaction>
+
+    <!-- reaction 0118    -->
+    <reaction reversible="yes" id="0118">
+      <equation>2 C2H4 [=] C2H5 + C2H3</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.820000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">71530.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:2.0</reactants>
+      <products>C2H5:1.0 C2H3:1</products>
+    </reaction>
+
+    <!-- reaction 0119    -->
+    <reaction reversible="yes" id="0119">
+      <equation>CH3 + C2H5 [=] CH4 + C2H4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.180000E+01</A>
+           <b>2.45</b>
+           <E units="cal/mol">-2921.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1 CH3:1.0</reactants>
+      <products>C2H4:1 CH4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0120    -->
+    <reaction reversible="yes" type="plog" id="0120">
+      <equation>2 CH3 [=] H + C2H5</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.740000E+09</A>
+           <b>0.105</b>
+           <E units="cal/mol">10664.300000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.570000E+10</A>
+           <b>-0.096</b>
+           <E units="cal/mol">11406.100000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>3.100000E+11</A>
+           <b>-0.362</b>
+           <E units="cal/mol">13372.500000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.150000E+07</A>
+           <b>0.885</b>
+           <E units="cal/mol">13532.500000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.032000E-01</A>
+           <b>3.23</b>
+           <E units="cal/mol">11236.100000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:2.0</reactants>
+      <products>H:1.0 C2H5:1</products>
+    </reaction>
+
+    <!-- reaction 0121    -->
+    <reaction reversible="yes" id="0121">
+      <equation>C2H5 + H [=] C2H4 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H5:1.0</reactants>
+      <products>H2:1 C2H4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0122    -->
+    <reaction reversible="yes" id="0122">
+      <equation>C2H5 + O [=] CH3CHO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.100000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1.0 O:1</reactants>
+      <products>H:1 CH3CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0123    -->
+    <reaction duplicate="yes" reversible="yes" type="plog" id="0123">
+      <equation>C2H5 + O2 [=] C2H4 + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.094000E+06</A>
+           <b>0.49</b>
+           <E units="cal/mol">-391.400000</E>
+           <P units="atm">0.04</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.843000E+04</A>
+           <b>1.13</b>
+           <E units="cal/mol">-720.600000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>7.561000E+11</A>
+           <b>-1.01</b>
+           <E units="cal/mol">4749.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1.0 O2:1</reactants>
+      <products>C2H4:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0124    -->
+    <reaction duplicate="yes" reversible="yes" id="0124">
+      <equation>C2H5 + O2 [=] C2H4 + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.609000E-03</A>
+           <b>3.51</b>
+           <E units="cal/mol">14160.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1.0 O2:1</reactants>
+      <products>C2H4:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0125    -->
+    <reaction reversible="yes" type="plog" id="0125">
+      <equation>C2H5 + O2 [=] C2H4O1-2 + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.303000E+00</A>
+           <b>1.93</b>
+           <E units="cal/mol">-502.700000</E>
+           <P units="atm">0.04</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.438000E-01</A>
+           <b>2.18</b>
+           <E units="cal/mol">-62.500000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.621000E+06</A>
+           <b>0.15</b>
+           <E units="cal/mol">5409.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1.0 O2:1</reactants>
+      <products>C2H4O1-2:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0126    -->
+    <reaction reversible="yes" type="plog" id="0126">
+      <equation>C2H5 + O2 [=] CH3CHO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.908000E-09</A>
+           <b>4.76</b>
+           <E units="cal/mol">254.300000</E>
+           <P units="atm">0.04</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>6.803000E-05</A>
+           <b>3.57</b>
+           <E units="cal/mol">2643.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.265000E-01</A>
+           <b>2.41</b>
+           <E units="cal/mol">5285.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H5:1.0 O2:1</reactants>
+      <products>CH3CHO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0127    -->
+    <reaction reversible="yes" id="0127">
+      <equation>C2H4O1-2 [=] CH3 + HCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.630000E+13</A>
+           <b>0.0</b>
+           <E units="cal/mol">57200.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0</reactants>
+      <products>CH3:1.0 HCO:1</products>
+    </reaction>
+
+    <!-- reaction 0128    -->
+    <reaction reversible="yes" id="0128">
+      <equation>C2H4O1-2 [=] CH3CHO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.407000E+12</A>
+           <b>0.0</b>
+           <E units="cal/mol">53800.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0</reactants>
+      <products>CH3CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0129    -->
+    <reaction reversible="yes" id="0129">
+      <equation>C2H4O1-2 + OH [=] C2H3O1-2 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.780000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">3610.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0 OH:1</reactants>
+      <products>C2H3O1-2:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0130    -->
+    <reaction reversible="yes" id="0130">
+      <equation>C2H4O1-2 + H [=] C2H3O1-2 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">9680.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H4O1-2:1.0</reactants>
+      <products>H2:1 C2H3O1-2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0131    -->
+    <reaction reversible="yes" id="0131">
+      <equation>C2H4O1-2 + HO2 [=] C2H3O1-2 + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.130000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">30430.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0 HO2:1</reactants>
+      <products>C2H3O1-2:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0132    -->
+    <reaction reversible="yes" id="0132">
+      <equation>C2H4O1-2 + CH3 [=] C2H3O1-2 + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.070000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">11830.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0 CH3:1</reactants>
+      <products>C2H3O1-2:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0133    -->
+    <reaction reversible="yes" id="0133">
+      <equation>C2H4O1-2 + CH3O [=] C2H3O1-2 + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">6750.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4O1-2:1.0 CH3O:1</reactants>
+      <products>CH3OH:1 C2H3O1-2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0134    -->
+    <reaction reversible="yes" id="0134">
+      <equation>C2H3O1-2 [=] CH3CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.500000E+14</A>
+           <b>0.0</b>
+           <E units="cal/mol">14000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3O1-2:1.0</reactants>
+      <products>CH3CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0135    -->
+    <reaction reversible="yes" id="0135">
+      <equation>C2H3O1-2 [=] CH2CHO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+14</A>
+           <b>0.0</b>
+           <E units="cal/mol">14000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3O1-2:1.0</reactants>
+      <products>CH2CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0136    -->
+    <reaction reversible="yes" type="falloff" id="0136">
+      <equation>CH3CHO (+ M) [=] CH3 + HCO (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.450000E+22</A>
+           <b>-1.74</b>
+           <E units="cal/mol">86355.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.030000E+56</A>
+           <b>-11.3</b>
+           <E units="cal/mol">95912.500000</E>
+        </Arrhenius>
+        <falloff type="Troe">0.00249 718.1 6.089 3780 </falloff>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0</reactants>
+      <products>CH3:1.0 HCO:1</products>
+    </reaction>
+
+    <!-- reaction 0137    -->
+    <reaction reversible="yes" type="falloff" id="0137">
+      <equation>CH3CHO (+ M) [=] CH4 + CO (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.720000E+21</A>
+           <b>-1.74</b>
+           <E units="cal/mol">86355.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.144000E+55</A>
+           <b>-11.3</b>
+           <E units="cal/mol">95912.500000</E>
+        </Arrhenius>
+        <falloff type="Troe">0.00249 718.1 6.089 3780 </falloff>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0</reactants>
+      <products>CO:1 CH4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0138    -->
+    <reaction reversible="yes" id="0138">
+      <equation>CH3CHO + H [=] CH3CO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.310000E+02</A>
+           <b>2.58</b>
+           <E units="cal/mol">1220.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH3CHO:1.0</reactants>
+      <products>H2:1 CH3CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0139    -->
+    <reaction reversible="yes" id="0139">
+      <equation>CH3CHO + H [=] CH2CHO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.720000E+00</A>
+           <b>3.1</b>
+           <E units="cal/mol">5210.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH3CHO:1.0</reactants>
+      <products>H2:1 CH2CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0140    -->
+    <reaction reversible="yes" id="0140">
+      <equation>CH3CHO + O [=] CH3CO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.940000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">1868.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 O:1</reactants>
+      <products>CH3CO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0141    -->
+    <reaction reversible="yes" id="0141">
+      <equation>CH3CHO + OH [=] CH3CO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.370000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">-619.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 OH:1</reactants>
+      <products>H2O:1 CH3CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0142    -->
+    <reaction reversible="yes" id="0142">
+      <equation>CH3CHO + O2 [=] CH3CO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.010000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">39150.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 O2:1</reactants>
+      <products>CH3CO:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0143    -->
+    <reaction reversible="yes" id="0143">
+      <equation>CH3CHO + CH3 [=] CH3CO + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.080000E-07</A>
+           <b>4.58</b>
+           <E units="cal/mol">1966.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 CH3:1</reactants>
+      <products>CH3CO:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0144    -->
+    <reaction reversible="yes" id="0144">
+      <equation>CH3CHO + HO2 [=] CH3CO + H2O2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.010000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">11920.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 HO2:1</reactants>
+      <products>CH3CO:1.0 H2O2:1</products>
+    </reaction>
+
+    <!-- reaction 0145    -->
+    <reaction reversible="yes" id="0145">
+      <equation>CH3CHO + OH [=] CH2CHO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.720000E+02</A>
+           <b>2.4</b>
+           <E units="cal/mol">815.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CHO:1.0 OH:1</reactants>
+      <products>CH2CHO:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0146    -->
+    <reaction reversible="yes" type="falloff" id="0146">
+      <equation>CH3CO (+ M) [=] CH3 + CO (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.070000E+12</A>
+           <b>0.63</b>
+           <E units="cal/mol">16900.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>5.650000E+15</A>
+           <b>-0.97</b>
+           <E units="cal/mol">14600.000000</E>
+        </Arrhenius>
+        <falloff type="Troe">0.629 8.73e+09 5.52 7.6e+07 </falloff>
+      </rateCoeff>
+      <reactants>CH3CO:1.0</reactants>
+      <products>CH3:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0147    -->
+    <reaction reversible="yes" id="0147">
+      <equation>CH3CO + H [=] CH2CO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH3CO:1.0</reactants>
+      <products>H2:1 CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0148    -->
+    <reaction reversible="yes" id="0148">
+      <equation>CH3CO + O [=] CH2CO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3CO:1.0 O:1</reactants>
+      <products>CH2CO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0149    -->
+    <reaction reversible="yes" id="0149">
+      <equation>CH3CO + CH3 [=] CH2CO + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1 CH3CO:1.0</reactants>
+      <products>CH2CO:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0150    -->
+    <reaction reversible="yes" type="falloff" id="0150">
+      <equation>CH2CHO (+ M) [=] CH2CO + H (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.430000E+15</A>
+           <b>-0.15</b>
+           <E units="cal/mol">45600.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>6.000000E+26</A>
+           <b>-3.8</b>
+           <E units="cal/mol">43423.900000</E>
+        </Arrhenius>
+        <falloff type="Troe">0.985 393 9.8e+09 5e+09 </falloff>
+      </rateCoeff>
+      <reactants>CH2CHO:1.0</reactants>
+      <products>H:1 CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0151    -->
+    <reaction reversible="yes" type="falloff" id="0151">
+      <equation>CH2CHO (+ M) [=] CH3 + CO (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.930000E+12</A>
+           <b>0.29</b>
+           <E units="cal/mol">40300.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>9.520000E+30</A>
+           <b>-5.07</b>
+           <E units="cal/mol">41300.000000</E>
+        </Arrhenius>
+        <falloff type="Troe">7.13e-17 1150 4.99e+09 1.79e+09 </falloff>
+      </rateCoeff>
+      <reactants>CH2CHO:1.0</reactants>
+      <products>CH3:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0152    -->
+    <reaction reversible="yes" type="plog" id="0152">
+      <equation>CH2CHO + O2 [=] CH2CO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.880000E+02</A>
+           <b>2.37</b>
+           <E units="cal/mol">23730.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.880000E+02</A>
+           <b>2.37</b>
+           <E units="cal/mol">27370.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.510000E+02</A>
+           <b>2.33</b>
+           <E units="cal/mol">23800.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>7.050000E+04</A>
+           <b>1.63</b>
+           <E units="cal/mol">25290.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CHO:1.0 O2:1</reactants>
+      <products>CH2CO:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0153    -->
+    <reaction reversible="no" type="plog" id="0153">
+      <equation>CH2CHO + O2 =] CH2O + CO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.680000E+14</A>
+           <b>-1.84</b>
+           <E units="cal/mol">6530.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.520000E+17</A>
+           <b>-2.58</b>
+           <E units="cal/mol">8980.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.650000E+16</A>
+           <b>-2.22</b>
+           <E units="cal/mol">10340.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.953000E+10</A>
+           <b>-0.6</b>
+           <E units="cal/mol">10120.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CHO:1.0 O2:1</reactants>
+      <products>CH2O:1.0 CO:1 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0154    -->
+    <reaction reversible="yes" type="falloff" id="0154">
+      <equation>CH2 + CO (+ M) [=] CH2CO (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.100000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>2.690000E+27</A>
+           <b>-5.11</b>
+           <E units="cal/mol">7095.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.5907 275 1226 5185 </falloff>
+      </rateCoeff>
+      <reactants>CH2:1.0 CO:1</reactants>
+      <products>CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0155    -->
+    <reaction reversible="yes" type="falloff" id="0155">
+      <equation>CH3CO (+ M) [=] CH2CO + H (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.413000E+07</A>
+           <b>1.917</b>
+           <E units="cal/mol">44987.200000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.516000E+48</A>
+           <b>-10.27</b>
+           <E units="cal/mol">55390.000000</E>
+        </Arrhenius>
+        <falloff type="Troe">0.6009 8.103e+09 667.7 5e+09 </falloff>
+      </rateCoeff>
+      <reactants>CH3CO:1.0</reactants>
+      <products>H:1 CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0156    -->
+    <reaction reversible="yes" id="0156">
+      <equation>CH2CO + H [=] HCCO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.401000E+12</A>
+           <b>-0.171</b>
+           <E units="cal/mol">8783.200000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH2CO:1.0</reactants>
+      <products>H2:1 HCCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0157    -->
+    <reaction reversible="yes" id="0157">
+      <equation>CH2CO + H [=] CH3 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.704000E+10</A>
+           <b>-0.171</b>
+           <E units="cal/mol">4183.200000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 CH2CO:1.0</reactants>
+      <products>CH3:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0158    -->
+    <reaction reversible="yes" id="0158">
+      <equation>CH2CO + O [=] CH2 + CO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.750000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">1350.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CO:1.0 O:1</reactants>
+      <products>CH2:1.0 CO2:1</products>
+    </reaction>
+
+    <!-- reaction 0159    -->
+    <reaction reversible="yes" id="0159">
+      <equation>CH2CO + O [=] HCCO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">8000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CO:1.0 O:1</reactants>
+      <products>HCCO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0160    -->
+    <reaction reversible="yes" id="0160">
+      <equation>CH2CO + OH [=] HCCO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">2000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CO:1.0 OH:1</reactants>
+      <products>H2O:1 HCCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0161    -->
+    <reaction reversible="yes" id="0161">
+      <equation>CH2CO + OH [=] CH2OH + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+09</A>
+           <b>0.0</b>
+           <E units="cal/mol">-1010.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CO:1.0 OH:1</reactants>
+      <products>CH2OH:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0162    -->
+    <reaction reversible="yes" id="0162">
+      <equation>CH2CO + CH3 [=] C2H5 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.769000E+01</A>
+           <b>2.312</b>
+           <E units="cal/mol">9468.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2CO:1.0 CH3:1</reactants>
+      <products>C2H5:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0163    -->
+    <reaction reversible="yes" id="0163">
+      <equation>CH2(S) + CH2CO [=] C2H4 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.600000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 CH2CO:1</reactants>
+      <products>C2H4:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0164    -->
+    <reaction reversible="no" id="0164">
+      <equation>HCCO + OH =] H2 + 2 CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCCO:1.0 OH:1</reactants>
+      <products>H2:1.0 CO:2.0</products>
+    </reaction>
+
+    <!-- reaction 0165    -->
+    <reaction reversible="no" id="0165">
+      <equation>HCCO + O =] H + 2 CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCCO:1.0 O:1</reactants>
+      <products>H:1.0 CO:2.0</products>
+    </reaction>
+
+    <!-- reaction 0166    -->
+    <reaction reversible="yes" id="0166">
+      <equation>HCCO + H [=] CH2(S) + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 HCCO:1.0</reactants>
+      <products>CH2(S):1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0167    -->
+    <reaction reversible="no" id="0167">
+      <equation>HCCO + O2 =] OH + 2 CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.910000E+08</A>
+           <b>-0.02</b>
+           <E units="cal/mol">1020.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCCO:1.0 O2:1</reactants>
+      <products>CO:2.0 OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0168    -->
+    <reaction reversible="no" id="0168">
+      <equation>HCCO + O2 =] CO2 + CO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.780000E+09</A>
+           <b>-0.142</b>
+           <E units="cal/mol">1150.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>HCCO:1.0 O2:1</reactants>
+      <products>H:1 CO2:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0169    -->
+    <reaction reversible="yes" type="falloff" id="0169">
+      <equation>C2H3 + H (+ M) [=] C2H4 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.080000E+09</A>
+           <b>0.27</b>
+           <E units="cal/mol">280.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>1.400000E+24</A>
+           <b>-3.86</b>
+           <E units="cal/mol">3320.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.782 207.5 2663 6095 </falloff>
+      </rateCoeff>
+      <reactants>H:1 C2H3:1.0</reactants>
+      <products>C2H4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0170    -->
+    <reaction reversible="yes" type="falloff" id="0170">
+      <equation>C2H4 (+ M) [=] H2 + H2CC (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.000000E+12</A>
+           <b>0.44</b>
+           <E units="cal/mol">88770.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>7.000000E+47</A>
+           <b>-9.31</b>
+           <E units="cal/mol">99860.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.7345 180 1035 5417 </falloff>
+      </rateCoeff>
+      <reactants>C2H4:1.0</reactants>
+      <products>H2:1.0 H2CC:1</products>
+    </reaction>
+
+    <!-- reaction 0171    -->
+    <reaction reversible="yes" id="0171">
+      <equation>C2H4 + H [=] C2H3 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.070000E+04</A>
+           <b>1.93</b>
+           <E units="cal/mol">12950.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H4:1.0</reactants>
+      <products>H2:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0172    -->
+    <reaction reversible="yes" id="0172">
+      <equation>C2H4 + O [=] CH3 + HCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.453000E+03</A>
+           <b>1.88</b>
+           <E units="cal/mol">183.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 O:1</reactants>
+      <products>CH3:1.0 HCO:1</products>
+    </reaction>
+
+    <!-- reaction 0173    -->
+    <reaction reversible="yes" id="0173">
+      <equation>C2H4 + O [=] CH2CHO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.098000E+03</A>
+           <b>1.88</b>
+           <E units="cal/mol">183.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 O:1</reactants>
+      <products>CH2CHO:1.0 H:1</products>
+    </reaction>
+
+    <!-- reaction 0174    -->
+    <reaction reversible="yes" id="0174">
+      <equation>C2H4 + OH [=] C2H3 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.230000E+01</A>
+           <b>2.745</b>
+           <E units="cal/mol">2215.500000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 OH:1</reactants>
+      <products>H2O:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0175    -->
+    <reaction reversible="yes" type="plog" id="0175">
+      <equation>C2H4 + OH [=] CH3 + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.350000E-03</A>
+           <b>2.92</b>
+           <E units="cal/mol">-1732.700000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>3.190000E-02</A>
+           <b>2.71</b>
+           <E units="cal/mol">-1172.300000</E>
+           <P units="atm">0.025</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>5.550000E-01</A>
+           <b>2.36</b>
+           <E units="cal/mol">-180.800000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.780000E+02</A>
+           <b>1.68</b>
+           <E units="cal/mol">2060.500000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.370000E+06</A>
+           <b>0.56</b>
+           <E units="cal/mol">6006.700000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.760000E+10</A>
+           <b>-0.5</b>
+           <E units="cal/mol">11455.100000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 OH:1</reactants>
+      <products>CH2O:1 CH3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0176    -->
+    <reaction reversible="yes" type="plog" id="0176">
+      <equation>C2H4 + OH [=] CH3CHO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.370000E-10</A>
+           <b>5.3</b>
+           <E units="cal/mol">-2050.600000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.730000E-08</A>
+           <b>4.57</b>
+           <E units="cal/mol">-618.000000</E>
+           <P units="atm">0.025</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.030000E-04</A>
+           <b>3.54</b>
+           <E units="cal/mol">1881.700000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.380000E-05</A>
+           <b>3.91</b>
+           <E units="cal/mol">1722.700000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.250000E+05</A>
+           <b>1.01</b>
+           <E units="cal/mol">10507.300000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>6.800000E+06</A>
+           <b>0.81</b>
+           <E units="cal/mol">13867.300000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 OH:1</reactants>
+      <products>H:1 CH3CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0177    -->
+    <reaction reversible="yes" type="plog" id="0177">
+      <equation>C2H4 + OH [=] C2H3OH + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.040000E+01</A>
+           <b>2.6</b>
+           <E units="cal/mol">4121.000000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.070000E+01</A>
+           <b>2.6</b>
+           <E units="cal/mol">4129.000000</E>
+           <P units="atm">0.025</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.520000E+01</A>
+           <b>2.56</b>
+           <E units="cal/mol">4238.300000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>3.190000E+02</A>
+           <b>2.19</b>
+           <E units="cal/mol">5255.600000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.940000E+05</A>
+           <b>1.43</b>
+           <E units="cal/mol">7828.800000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.550000E+07</A>
+           <b>0.75</b>
+           <E units="cal/mol">11490.800000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 OH:1</reactants>
+      <products>H:1 C2H3OH:1.0</products>
+    </reaction>
+
+    <!-- reaction 0178    -->
+    <reaction reversible="yes" id="0178">
+      <equation>C2H3OH + O2 [=] CH2CHO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.310000E+08</A>
+           <b>0.21</b>
+           <E units="cal/mol">39830.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3OH:1.0 O2:1</reactants>
+      <products>CH2CHO:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0179    -->
+    <reaction reversible="yes" id="0179">
+      <equation>C2H3OH + O [=] CH2CHO + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.875000E+03</A>
+           <b>1.9</b>
+           <E units="cal/mol">-860.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3OH:1.0 O:1</reactants>
+      <products>CH2CHO:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0180    -->
+    <reaction reversible="yes" id="0180">
+      <equation>C2H3OH + OH [=] CH2CHO + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.330000E+06</A>
+           <b>1.1</b>
+           <E units="cal/mol">540.500000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3OH:1.0 OH:1</reactants>
+      <products>CH2CHO:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0181    -->
+    <reaction reversible="yes" id="0181">
+      <equation>C2H3OH + CH3 [=] CH2CHO + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.030000E-11</A>
+           <b>5.9</b>
+           <E units="cal/mol">1052.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1 C2H3OH:1.0</reactants>
+      <products>CH2CHO:1.0 CH4:1</products>
+    </reaction>
+
+    <!-- reaction 0182    -->
+    <reaction reversible="yes" id="0182">
+      <equation>C2H3OH + H [=] CH2CHO + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.480000E+00</A>
+           <b>3.077</b>
+           <E units="cal/mol">7220.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H3OH:1.0</reactants>
+      <products>H2:1 CH2CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0183    -->
+    <reaction reversible="yes" id="0183">
+      <equation>C2H3OH + HO2 [=] CH3CHO + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.490000E+02</A>
+           <b>1.67</b>
+           <E units="cal/mol">6810.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3OH:1.0 HO2:1</reactants>
+      <products>CH3CHO:1.0 HO2:1</products>
+    </reaction>
+
+    <!-- reaction 0184    -->
+    <reaction reversible="yes" type="plog" id="0184">
+      <equation>C2H3OH [=] CH3CHO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.420000E+46</A>
+           <b>-10.56</b>
+           <E units="cal/mol">67420.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.420000E+42</A>
+           <b>-9.09</b>
+           <E units="cal/mol">67069.200000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>2.900000E+27</A>
+           <b>-4.35</b>
+           <E units="cal/mol">61612.900000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3OH:1.0</reactants>
+      <products>CH3CHO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0185    -->
+    <reaction reversible="yes" id="0185">
+      <equation>C2H4 + CH3 [=] C2H3 + CH4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.620000E-03</A>
+           <b>3.7</b>
+           <E units="cal/mol">9500.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1 C2H4:1.0</reactants>
+      <products>CH4:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0186    -->
+    <reaction reversible="yes" id="0186">
+      <equation>C2H4 + O2 [=] C2H3 + HO2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.220000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">57623.100000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 O2:1</reactants>
+      <products>HO2:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0187    -->
+    <reaction reversible="yes" id="0187">
+      <equation>C2H4 + CH3O [=] C2H3 + CH3OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.200000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">6750.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 CH3O:1</reactants>
+      <products>CH3OH:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0188    -->
+    <reaction reversible="yes" id="0188">
+      <equation>C2H4 + HO2 [=] C2H4O1-2 + OH</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.575000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">17190.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H4:1.0 HO2:1</reactants>
+      <products>C2H4O1-2:1.0 OH:1</products>
+    </reaction>
+
+    <!-- reaction 0189    -->
+    <reaction reversible="yes" id="0189">
+      <equation>CH2(S) + CH3 [=] C2H4 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH2(S):1.0 CH3:1</reactants>
+      <products>H:1 C2H4:1.0</products>
+    </reaction>
+
+    <!-- reaction 0190    -->
+    <reaction reversible="yes" type="falloff" id="0190">
+      <equation>C2H2 + H (+ M) [=] C2H3 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.710000E+07</A>
+           <b>1.266</b>
+           <E units="cal/mol">2709.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>6.346000E+25</A>
+           <b>-4.664</b>
+           <E units="cal/mol">3780.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.788 -10200 1e-30 </falloff>
+      </rateCoeff>
+      <reactants>H:1 C2H2:1.0</reactants>
+      <products>C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0191    -->
+    <reaction reversible="yes" id="0191">
+      <equation>C2H3 + O2 [=] CH2O + HCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.700000E+26</A>
+           <b>-5.312</b>
+           <E units="cal/mol">6503.100000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3:1.0 O2:1</reactants>
+      <products>CH2O:1.0 HCO:1</products>
+    </reaction>
+
+    <!-- reaction 0192    -->
+    <reaction reversible="yes" id="0192">
+      <equation>C2H3 + O2 [=] CH2CHO + O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.000000E+11</A>
+           <b>-0.611</b>
+           <E units="cal/mol">5262.400000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3:1.0 O2:1</reactants>
+      <products>CH2CHO:1.0 O:1</products>
+    </reaction>
+
+    <!-- reaction 0193    -->
+    <reaction reversible="no" id="0193">
+      <equation>C2H3 + O2 =] H + CO + CH2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.190000E+12</A>
+           <b>-1.26</b>
+           <E units="cal/mol">3312.600000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3:1.0 O2:1</reactants>
+      <products>CH2O:1 H:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0194    -->
+    <reaction reversible="yes" id="0194">
+      <equation>CH3 + C2H3 [=] CH4 + C2H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.920000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>CH3:1.0 C2H3:1</reactants>
+      <products>CH4:1.0 C2H2:1</products>
+    </reaction>
+
+    <!-- reaction 0195    -->
+    <reaction reversible="yes" id="0195">
+      <equation>C2H3 + H [=] C2H2 + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H3:1.0</reactants>
+      <products>H2:1 C2H2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0196    -->
+    <reaction reversible="yes" id="0196">
+      <equation>C2H3 + H [=] H2CC + H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>6.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H:1 C2H3:1.0</reactants>
+      <products>H2CC:1.0 H2:1</products>
+    </reaction>
+
+    <!-- reaction 0197    -->
+    <reaction reversible="yes" id="0197">
+      <equation>C2H3 + OH [=] C2H2 + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>3.011000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3:1.0 OH:1</reactants>
+      <products>H2O:1 C2H2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0198    -->
+    <reaction reversible="yes" id="0198">
+      <equation>2 C2H3 [=] C2H2 + C2H4</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>9.600000E+08</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H3:2.0</reactants>
+      <products>C2H4:1 C2H2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0199    -->
+    <reaction reversible="yes" type="falloff" id="0199">
+      <equation>C2H + H (+ M) [=] C2H2 (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+14</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>3.750000E+27</A>
+           <b>-4.8</b>
+           <E units="cal/mol">1900.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Troe">0.646 132 1315 5566 </falloff>
+      </rateCoeff>
+      <reactants>H:1 C2H:1.0</reactants>
+      <products>C2H2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0200    -->
+    <reaction reversible="yes" id="0200">
+      <equation>C2H + OH [=] H + HCCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H:1.0 OH:1</reactants>
+      <products>H:1.0 HCCO:1</products>
+    </reaction>
+
+    <!-- reaction 0201    -->
+    <reaction reversible="yes" id="0201">
+      <equation>C2H + O2 [=] HCO + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>5.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">1500.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H:1.0 O2:1</reactants>
+      <products>CO:1 HCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0202    -->
+    <reaction reversible="yes" id="0202">
+      <equation>C2H + H2 [=] H + C2H2</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.900000E+02</A>
+           <b>2.5</b>
+           <E units="cal/mol">560.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2:1 C2H:1.0</reactants>
+      <products>H:1.0 C2H2:1</products>
+    </reaction>
+
+    <!-- reaction 0203    -->
+    <reaction reversible="yes" type="falloff" id="0203">
+      <equation>C2H2 (+ M) [=] H2CC (+ M)</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>8.000000E+14</A>
+           <b>-0.52</b>
+           <E units="cal/mol">50750.000000</E>
+        </Arrhenius>
+        <Arrhenius name="k0">
+           <A>2.450000E+12</A>
+           <b>-0.64</b>
+           <E units="cal/mol">49700.000000</E>
+        </Arrhenius>
+        <efficiencies default="1.0">C2H2:2.5 C2H4:2.5 C2H6:3.0 CH4:2.0 CO:1.5 CO2:2.0 H2:2.0 H2O:6.0</efficiencies>
+        <falloff type="Lindemann"/>
+      </rateCoeff>
+      <reactants>C2H2:1.0</reactants>
+      <products>H2CC:1.0</products>
+    </reaction>
+
+    <!-- reaction 0204    -->
+    <reaction reversible="yes" id="0204">
+      <equation>C2H2 + O [=] CH2 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>7.395000E+05</A>
+           <b>1.28</b>
+           <E units="cal/mol">2472.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 O:1</reactants>
+      <products>CH2:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0205    -->
+    <reaction reversible="yes" id="0205">
+      <equation>C2H2 + O [=] HCCO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.958000E+06</A>
+           <b>1.28</b>
+           <E units="cal/mol">2472.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 O:1</reactants>
+      <products>H:1 HCCO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0206    -->
+    <reaction reversible="yes" id="0206">
+      <equation>C2H2 + OH [=] C2H + H2O</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.632000E+03</A>
+           <b>2.14</b>
+           <E units="cal/mol">17060.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 OH:1</reactants>
+      <products>C2H:1.0 H2O:1</products>
+    </reaction>
+
+    <!-- reaction 0207    -->
+    <reaction reversible="yes" type="plog" id="0207">
+      <equation>C2H2 + OH [=] CH2CO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.578000E+00</A>
+           <b>2.56</b>
+           <E units="cal/mol">-844.500000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.518000E+01</A>
+           <b>2.28</b>
+           <E units="cal/mol">-292.100000</E>
+           <P units="atm">0.025</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>3.017000E+02</A>
+           <b>1.92</b>
+           <E units="cal/mol">598.100000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>7.528000E+03</A>
+           <b>1.55</b>
+           <E units="cal/mol">2106.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>5.101000E+03</A>
+           <b>1.65</b>
+           <E units="cal/mol">3400.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.457000E+01</A>
+           <b>2.45</b>
+           <E units="cal/mol">4477.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 OH:1</reactants>
+      <products>H:1 CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0208    -->
+    <reaction reversible="yes" type="plog" id="0208">
+      <equation>C2H2 + OH [=] CH3 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>4.757000E+02</A>
+           <b>1.68</b>
+           <E units="cal/mol">-329.800000</E>
+           <P units="atm">0.01</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.372000E+03</A>
+           <b>1.4</b>
+           <E units="cal/mol">226.500000</E>
+           <P units="atm">0.025</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>7.648000E+04</A>
+           <b>1.05</b>
+           <E units="cal/mol">1115.000000</E>
+           <P units="atm">0.1</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>1.277000E+06</A>
+           <b>0.73</b>
+           <E units="cal/mol">2579.000000</E>
+           <P units="atm">1.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>4.312000E+05</A>
+           <b>0.92</b>
+           <E units="cal/mol">3736.000000</E>
+           <P units="atm">10.0</P>
+        </Arrhenius>
+        <Arrhenius>
+           <A>8.250000E+02</A>
+           <b>1.77</b>
+           <E units="cal/mol">4697.000000</E>
+           <P units="atm">100.0</P>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 OH:1</reactants>
+      <products>CH3:1.0 CO:1</products>
+    </reaction>
+
+    <!-- reaction 0209    -->
+    <reaction reversible="yes" id="0209">
+      <equation>C2H2 + HCO [=] C2H3 + CO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+04</A>
+           <b>2.0</b>
+           <E units="cal/mol">6000.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>C2H2:1.0 HCO:1</reactants>
+      <products>CO:1 C2H3:1.0</products>
+    </reaction>
+
+    <!-- reaction 0210    -->
+    <reaction reversible="yes" id="0210">
+      <equation>H2CC + H [=] C2H2 + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+11</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2CC:1.0 H:1</reactants>
+      <products>H:1 C2H2:1.0</products>
+    </reaction>
+
+    <!-- reaction 0211    -->
+    <reaction reversible="yes" id="0211">
+      <equation>H2CC + OH [=] CH2CO + H</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>2.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2CC:1.0 OH:1</reactants>
+      <products>H:1 CH2CO:1.0</products>
+    </reaction>
+
+    <!-- reaction 0212    -->
+    <reaction reversible="yes" id="0212">
+      <equation>H2CC + O2 [=] 2 HCO</equation>
+      <rateCoeff>
+        <Arrhenius>
+           <A>1.000000E+10</A>
+           <b>0.0</b>
+           <E units="cal/mol">0.000000</E>
+        </Arrhenius>
+      </rateCoeff>
+      <reactants>H2CC:1.0 O2:1</reactants>
+      <products>HCO:2.0</products>
+    </reaction>
+  </reactionData>
+</ctml>

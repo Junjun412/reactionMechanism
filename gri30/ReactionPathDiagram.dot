@@ -1,0 +1,5 @@
+digraph reaction_paths {
+node[fontsize=20,shape="box"]
+ label = "Scale = 1e-10\l Reaction path diagram following C";
+ fontname = "CMU Serif Roman";
+}

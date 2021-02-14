@@ -1,0 +1,11 @@
+! GRI-Mech Version 3.0 7/30/99  CHEMKIN-II format
+! Species for minimal CH4-air mixture
+ELEMENTS
+O  H  C  N
+END
+SPECIES
+CH4     O2      H2O     CO2     N2
+END
+
+REACTIONS
+END
